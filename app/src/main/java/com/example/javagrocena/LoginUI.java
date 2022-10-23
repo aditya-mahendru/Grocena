@@ -20,7 +20,7 @@ public class LoginUI extends AppCompatActivity {
 
         signIn = findViewById(R.id.button_login);
         signUp = findViewById(R.id.button_signUp);
-        MobNo = findViewById(R.id.text_mobNum);
+        MobNo = findViewById(R.id.text_eMail);
         Password = findViewById(R.id.text_password);
 
         signUp.setOnClickListener(view -> startActivity(new Intent(LoginUI.this,RegistrationActivity.class)));

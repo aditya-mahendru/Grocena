@@ -50,14 +50,14 @@
             tools:ignore="HardcodedText"/>
         <!-- Mobile -->
         <EditText
-            android:id="@+id/text_mob_num"
+            android:id="@+id/text_eMail"
             android:layout_width="214dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="80dp"
             android:fontFamily="@font/poppins_light"
             android:hint="@string/enter_mob"
-            android:inputType="phone"
+            android:inputType="textEmailAddress"
             android:minHeight="48dp"
             android:textColor="@color/black"
             android:textColorHint="@color/hintGrey"
