@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "683811410522",
+    "project_id": "grocena-85157",
+    "storage_bucket": "grocena-85157.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:683811410522:android:486f8791da84176707fe63",
+        "android_client_info": {
+          "package_name": "com.example.javagrocena"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "683811410522-bum1ibhc1pd2fbq6biv13lb00h5abdjq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkt0uRRMPAHENYb0K2VZC4faAp-uJL3Jw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "683811410522-bum1ibhc1pd2fbq6biv13lb00h5abdjq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
