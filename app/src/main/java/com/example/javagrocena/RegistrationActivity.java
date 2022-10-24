@@ -13,16 +13,22 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.javagrocena.models.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Objects;
 
 public class RegistrationActivity extends AppCompatActivity {
 
     Button signUp;
     TextView backToSignIn;
     EditText name, eMail,password, confirmPassword;
+
+    FirebaseDatabase database;
     FirebaseAuth auth;
 
     @Override
@@ -31,6 +37,8 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance("https://grocena-85157-default-rtdb.asia-southeast1.firebasedatabase.app/");
+
         signUp = findViewById(R.id.button_register);
         backToSignIn = findViewById(R.id.goBackText);
         name = findViewById(R.id.name);
@@ -102,6 +110,11 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
+                    UserModel user = new UserModel(Name,EMail,Pass);
+
+                    String id = Objects.requireNonNull(task.getResult().getUser()).getUid();
+                    database.getReference("Users").child(id).setValue(user);
+
                     Toast.makeText(RegistrationActivity.this,"Registration Successful",Toast.LENGTH_SHORT).show();
                 }
                 else
