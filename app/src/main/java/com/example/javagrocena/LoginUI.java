@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,6 +24,8 @@ public class LoginUI extends AppCompatActivity {
 
     FirebaseAuth auth;
 
+    ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,8 @@ public class LoginUI extends AppCompatActivity {
         signUp = findViewById(R.id.button_signUp);
         EMail = findViewById(R.id.text_eMail);
         Password = findViewById(R.id.text_password);
+        progressBar = findViewById(R.id.progress_circular);
+        progressBar.setVisibility(View.GONE);
 
         auth = FirebaseAuth.getInstance();
 
@@ -40,6 +45,7 @@ public class LoginUI extends AppCompatActivity {
         signIn.setOnClickListener(view ->
         {
             loginUser();
+            progressBar.setVisibility(View.VISIBLE);
         });
 
     }
@@ -65,10 +71,12 @@ public class LoginUI extends AppCompatActivity {
 
                 if(task.isSuccessful())
                 {
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(LoginUI.this, "Logged In", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(LoginUI.this, "Error"+task.getException(), Toast.LENGTH_SHORT).show();
                 }
             }

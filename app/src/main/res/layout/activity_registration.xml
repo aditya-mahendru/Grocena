@@ -80,6 +80,7 @@
             android:textSize="16sp"
             android:autofillHints=""
             tools:ignore="HardcodedText"/>
+        <!-- Confirm Password -->
         <EditText
             android:id="@+id/confirmPassword"
             android:layout_width="214dp"
@@ -95,7 +96,7 @@
             android:textSize="16sp"
             android:autofillHints=""
             tools:ignore="HardcodedText"/>
-        
+        <!--Sign Up Button -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_register"
             android:layout_width="wrap_content"
@@ -110,6 +111,7 @@
             android:textSize="15sp"
             android:layout_alignParentBottom="true"
             tools:ignore="HardcodedText"/>
+        <!-- Go Back Text -->
         <TextView
             android:id="@+id/goBackText"
             android:clickable="true"
@@ -123,6 +125,19 @@
             android:layout_centerHorizontal="true"
             tools:ignore="HardcodedText"
             android:focusable="true" />
+
+        <ProgressBar
+            android:id="@+id/progress_circular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@id/button_register"
+            android:layout_marginBottom="55dp"
+            android:scaleX=".5"
+            android:scaleY=".5"/>
+
+
+
     </RelativeLayout>
 
 
