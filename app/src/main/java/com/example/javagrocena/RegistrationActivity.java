@@ -10,6 +10,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,8 @@ public class RegistrationActivity extends AppCompatActivity {
     FirebaseDatabase database;
     FirebaseAuth auth;
 
+    ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +49,9 @@ public class RegistrationActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         confirmPassword = findViewById(R.id.confirmPassword);
 
+        progressBar = findViewById(R.id.progress_circular);
+        progressBar.setVisibility(View.GONE);
+
         backToSignIn.setOnClickListener(view -> startActivity(new Intent(RegistrationActivity.this,LoginUI.class)));
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +59,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 if(isValidated())
                 {
                     createUser();
+                    progressBar.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -114,6 +121,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
                     String id = Objects.requireNonNull(task.getResult().getUser()).getUid();
                     database.getReference("Users").child(id).setValue(user);
+                    progressBar.setVisibility(View.GONE);
+
 
                     Toast.makeText(RegistrationActivity.this,"Registration Successful",Toast.LENGTH_SHORT).show();
                 }
