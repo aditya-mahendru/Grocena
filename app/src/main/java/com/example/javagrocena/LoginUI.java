@@ -72,6 +72,8 @@ public class LoginUI extends AppCompatActivity {
                 if(task.isSuccessful())
                 {
                     progressBar.setVisibility(View.GONE);
+                    Intent intent = new Intent(LoginUI.this,MainActivity.class);
+                    LoginUI.this.startActivity(intent);
                     Toast.makeText(LoginUI.this, "Logged In", Toast.LENGTH_SHORT).show();
                 }
                 else
