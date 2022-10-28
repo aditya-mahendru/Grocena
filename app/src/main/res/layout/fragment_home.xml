@@ -58,10 +58,7 @@
                             android:layout_height="53dp"
                             android:layout_centerVertical="true"
                             android:layout_gravity="center"
-                            android:background="@drawable/default_user_avatar"
-
-
-                            />
+                            android:background="@drawable/default_user_avatar" />
                     </RelativeLayout>
 
                     <ImageView
