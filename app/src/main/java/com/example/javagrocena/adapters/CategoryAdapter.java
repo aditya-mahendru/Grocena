@@ -20,16 +20,18 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     private Context context;
     private List<CategoryModel> categoryModelList;
+    private OnChooseListener monChooseListener;
 
-    public CategoryAdapter(Context context, List<CategoryModel> categoryModelList) {
+    public CategoryAdapter(Context context, List<CategoryModel> categoryModelList, OnChooseListener onChooseListener) {
         this.context = context;
         this.categoryModelList = categoryModelList;
+        this.monChooseListener = onChooseListener;
     }
 
     @NonNull
     @Override
     public CategoryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.category_names,parent,false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.category_names,parent,false),monChooseListener);
     }
 
     @Override
@@ -38,20 +40,38 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         Glide.with(context).load(categoryModelList.get(position).getUrl()).into(holder.backImg);
         holder.type.setText(categoryModelList.get(position).getType());
 
+
     }
 
     @Override
     public int getItemCount() {
         return categoryModelList.size();
     }
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView backImg;
         TextView type;
-        public ViewHolder(@NonNull View itemView){
+
+        OnChooseListener onChooseListener;
+
+        public ViewHolder(@NonNull View itemView, OnChooseListener onChooseListener){
             super(itemView);
             backImg = itemView.findViewById(R.id.back_img);
             type = itemView.findViewById(R.id.category_type);
+            this.onChooseListener = onChooseListener;
+
+            itemView.setOnClickListener(this);
 
         }
+
+
+        @Override
+        public void onClick(View view) {
+
+            onChooseListener.onCategoryClick(categoryModelList.get(getAdapterPosition()).getType());
+
+        }
+    }
+    public interface OnChooseListener {
+        void onCategoryClick (String type);
     }
 }
