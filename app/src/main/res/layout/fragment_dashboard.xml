@@ -1,79 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tool="http://schemas.android.com/apk/res-auto"
-    android:layout_gravity="clip_horizontal"
-    android:background="@color/white"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:background="@color/red"
+    android:fitsSystemWindows="false">
 
-    <TextView
-        android:id="@+id/txtSpeech_heading"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="clip_horizontal"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
-        android:ellipsize="marquee"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:freezesText="true"
-        android:gravity="center_horizontal"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:scrollHorizontally="true"
-        android:singleLine="true"
-        android:text="Search Product"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:textStyle="normal" />
+
 
     <RelativeLayout
-        android:id="@+id/search_root"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtSpeech_heading">
-
-        <EditText
-            android:id="@+id/edt_search_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_toLeftOf="@+id/btnSpeak"
-            android:background="@drawable/rounder_rectangle_visa_card"
-            android:hapticFeedbackEnabled="true"
-            android:hint="What do you wish for ?"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:padding="5dp"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textColorHint="@color/colorEditText"
-            android:textSize="20sp" />
-
-        <ImageButton
-            android:id="@+id/btnSpeak"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@null"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ico_mic" />
-    </RelativeLayout>
-
-    <ListView
-        android:id="@+id/search_list_view"
+        android:id="@+id/rl_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/search_root"
-        android:visibility="visible"/>
+        android:padding="20dp"
+        android:background="@drawable/round_top_corner_red_bg"
 
-</RelativeLayout>
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/rl_challenge_main_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:orientation="vertical">
+
+
+                    <com.android.volley.toolbox.NetworkImageView
+                        android:id="@+id/img_slider"
+                        android:layout_width="fill_parent"
+                        android:layout_height="150dp"
+                        android:scaleType="fitXY"
+
+                        android:visibility="gone" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/rl_redeam_coin"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:visibility="gone">
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/img_elite_membership"
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp"
+                        android:layout_below="@+id/rl_redeam_coin"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="10dp"
+                        android:scaleType="fitXY"
+                        android:visibility="gone">
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_choose_your_game"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/img_elite_membership"
+                        android:gravity="center">
+
+                        <LinearLayout
+                            android:id="@+id/ll"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/rl_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/gray_color"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@color/white"
+                            android:paddingStart="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingEnd="2dp"
+                            android:paddingRight="2dp">
+
+                            <ImageView
+                                android:id="@+id/img_search"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+
+                                android:src="@drawable/search_lens_icon" />
+
+                            <EditText
+                                android:id="@+id/et_search"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="15dp"
+                                android:layout_toRightOf="@+id/img_search"
+                                android:background="@android:color/transparent"
+                                android:hint="Search"
+                                android:spinnerMode="dropdown" />
+
+                            <ImageView
+                                android:id="@+id/img_search_by"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginRight="10dp"
+                                android:src="@drawable/search_button" />
+
+
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view_challenge"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/rl_search"
+                        android:layout_marginTop="15dp"
+
+                        android:padding="10dp"
+                        android:scrollbars="vertical" />
+
+
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:indeterminateTint="@color/gray" />
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+

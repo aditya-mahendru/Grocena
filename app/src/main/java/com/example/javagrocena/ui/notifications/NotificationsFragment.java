@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.javagrocena.R;
 import com.example.javagrocena.databinding.FragmentNotificationsBinding;
 
 public class NotificationsFragment extends Fragment {
@@ -25,7 +28,24 @@ public class NotificationsFragment extends Fragment {
 
         View root = binding.getRoot();
 
+        findByIds(root);
+
+
         return root;
+    }
+
+    private void findByIds(View V) {
+
+
+        Button btnCheckout = V.findViewById(R.id.btn_checkout);
+        btnCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Order Placed successfully", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
     @Override
