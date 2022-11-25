@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.notifications.NotificationsFragment"
-    android:background="@drawable/checkess_logo">
+    android:background="@drawable/cart">
 
     <RelativeLayout
         android:id="@+id/relative"
@@ -38,7 +38,7 @@
         android:textSize="20sp"
         android:text="Congratulations, your final order has been placed successfully.
                                             Soon it will be verified."
-        android:visibility="gone"
+        android:visibility="visible"
         tools:ignore="HardcodedText"/>
 
     <androidx.recyclerview.widget.RecyclerView

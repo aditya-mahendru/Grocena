@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">JavaGrocena</string>
+    <string name="app_name">Checkers</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_dashboard">Search</string>
+    <string name="title_notifications">Cart</string>
     <string name="welcome_back">Welcome Back!</string>
     <string name="missedyou">We missed you</string>
     <string name="enter_mob">Mobile Number (10-digit)</string>

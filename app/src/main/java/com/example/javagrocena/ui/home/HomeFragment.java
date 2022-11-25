@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,8 +16,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.javagrocena.R;
+import com.example.javagrocena.adapters.CategoryAdapter;
 import com.example.javagrocena.adapters.ShopNamesAdapter;
 import com.example.javagrocena.databinding.FragmentHomeBinding;
+import com.example.javagrocena.models.CategoryModel;
 import com.example.javagrocena.models.ShopModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,12 +34,15 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
-    RecyclerView shopsRec;
+    RecyclerView shopsRec, categoryRec;
     FirebaseFirestore db;
     //ShopNames
 
     List<ShopModel> shopModelList;
     ShopNamesAdapter shopNamesAdapter;
+
+    List<CategoryModel> categoryModelList;
+    CategoryAdapter categoryAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -72,6 +79,35 @@ public class HomeFragment extends Fragment {
                         {
                             Toast.makeText(getActivity(), "Error"+task.getException(), Toast.LENGTH_SHORT).show();
                         }
+                    }
+                });
+
+        categoryRec = root.findViewById(R.id.recycler_view_categories);
+
+        categoryRec.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
+        categoryModelList = new ArrayList<>();
+        categoryAdapter = new CategoryAdapter(getActivity(),categoryModelList);
+        categoryRec.setAdapter(categoryAdapter);
+
+        db.collection("Categories")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful())
+                        {
+                            for (QueryDocumentSnapshot document : task.getResult())
+                            {
+                                CategoryModel categoryModel = document.toObject(CategoryModel.class);
+                                categoryModelList.add(categoryModel);
+                                categoryAdapter.notifyDataSetChanged();
+                            }
+                        }
+                        else
+                        {
+                            Toast.makeText(getActivity(),"Error"+task.getException(),Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                 });
 
