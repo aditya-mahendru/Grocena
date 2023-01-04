@@ -1,4 +1,4 @@
-![Checkers Logo](https://github.com/aditya-mahendru/Grocena/blob/master/MainLogo_Final.jpg)
+![Grocena Logo](https://github.com/aditya-mahendru/Grocena/blob/master/Grocena%20Logo.png)
 
 Order food from stores all across the SNU Campus. It's as easy as choosing your food and paying for it. No more waiting in line & no more waiting for your food to be mad. Checkers is the fastest way to get food on campus.
 
